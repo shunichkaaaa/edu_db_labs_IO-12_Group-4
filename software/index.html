@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Реалізація інформаційного та програмного забезпечення | Система управління проектами</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/edu_db_labs_IO-12_Group-4/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="description" content="Лабораторні роботи з дисципліни &quot;Організація баз даних&quot;">
+    
+    <link rel="preload" href="/edu_db_labs_IO-12_Group-4/assets/css/0.styles.bfba66be.css" as="style"><link rel="preload" href="/edu_db_labs_IO-12_Group-4/assets/js/app.093206e8.js" as="script"><link rel="preload" href="/edu_db_labs_IO-12_Group-4/assets/js/2.21dfbd12.js" as="script"><link rel="preload" href="/edu_db_labs_IO-12_Group-4/assets/js/23.a055a33b.js" as="script"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/10.d4f8710e.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/11.5b3a880f.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/12.a78fcacd.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/13.883f16c7.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/14.1ef9e106.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/15.8cd9f5f4.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/16.b261878b.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/17.25baf51d.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/18.ab9065e4.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/19.0ad9747f.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/20.d8eaa887.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/21.3746777b.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/22.d15dd3b1.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/24.9fcf4a3d.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/25.0dd84f49.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/26.2e99f479.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/3.004af825.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/4.3a479a52.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/5.591a8bc0.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/6.a8273a57.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/7.0ce18a35.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/8.1e02a0c3.js"><link rel="prefetch" href="/edu_db_labs_IO-12_Group-4/assets/js/9.90aafb89.js">
+    <link rel="stylesheet" href="/edu_db_labs_IO-12_Group-4/assets/css/0.styles.bfba66be.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/edu_db_labs_IO-12_Group-4/" class="home-link router-link-active"><!----> <span class="site-name">Система управління проектами</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/edu_db_labs_IO-12_Group-4/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/shunichkaaaa/edu_db_labs_IO-12_Group-4" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/edu_db_labs_IO-12_Group-4/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/shunichkaaaa/edu_db_labs_IO-12_Group-4" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/edu_db_labs_IO-12_Group-4/intro/" class="sidebar-link">Вступ</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/edu_db_labs_IO-12_Group-4/requirements/" class="sidebar-heading clickable"><span>Розроблення загальних вимог до системи</span> <span class="arrow right"></span></a> <!----></section></li><li><a href="/edu_db_labs_IO-12_Group-4/use%20cases/" class="sidebar-link">Розроблення вимог до функціональности системи</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/use%20cases/#_1-діаграма-прецедентів" class="sidebar-link">1. Діаграма прецедентів</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/use%20cases/#_2-usecases-для-адміністратора-системи" class="sidebar-link">2. Usecases для адміністратора системи</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/use%20cases/#_3-usecases-для-менеджера-воркспеису" class="sidebar-link">3. Usecases для менеджера воркспейсу</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/use%20cases/#_4-usecases-для-менеджера-проєкту" class="sidebar-link">4. Usecases для менеджера проєкту</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/use%20cases/#_5-usecases-для-користувача-проєкту" class="sidebar-link">5. Usecases для користувача проєкту</a></li></ul></li><li><a href="/edu_db_labs_IO-12_Group-4/design/" class="sidebar-link">Проектування інформаційного забезпечення</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/design/#модель-бізнес-об-єктів" class="sidebar-link">Модель бізнес-об'єктів</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/design/#er-модель" class="sidebar-link">ER-модель</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/design/#реляціина-схема" class="sidebar-link">Реляційна схема</a></li></ul></li><li><a href="/edu_db_labs_IO-12_Group-4/software/" aria-current="page" class="active sidebar-link">Реалізація інформаційного та програмного забезпечення</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/software/#sql-скрипт-для-створення-на-початкового-наповнення-бази-даних" class="sidebar-link">SQL-скрипт для створення на початкового наповнення бази даних</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/software/#restfull-сервіс-для-управління-даними" class="sidebar-link">RESTfull сервіс для управління даними</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/software/#налаштування-express-сервера" class="sidebar-link">Налаштування Express сервера</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/software/#підключення-до-бази-даних-mysql" class="sidebar-link">Підключення до бази даних MySQL</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/software/#створення-контролерів-додатка" class="sidebar-link">Створення контролерів додатка</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/software/#створення-глобальних-обробників-помилок" class="sidebar-link">Створення глобальних обробників помилок</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/software/#створення-routes" class="sidebar-link">Створення routes</a></li></ul></li></ul></li><li><a href="/edu_db_labs_IO-12_Group-4/test/" class="sidebar-link">Тестування працездатності системи</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/test/#термінал-сервера" class="sidebar-link">Термінал сервера</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/test/#відображення-всіх-сутностеи" class="sidebar-link">Відображення всіх сутностей</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/test/#додавання-сутності-create" class="sidebar-link">Додавання сутності (CREATE)</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/test/#зчитування-сутності-по-id-read" class="sidebar-link">Зчитування сутності по id (READ)</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/test/#оновлення-сутності-по-id-update" class="sidebar-link">Оновлення сутності по id (UPDATE)</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/test/#видалення-сутності-delete" class="sidebar-link">Видалення сутності (DELETE)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/test/#початковии-стан" class="sidebar-link">Початковий стан</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/test/#запит" class="sidebar-link">Запит</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs_IO-12_Group-4/test/#результат" class="sidebar-link">Результат</a></li></ul></li></ul></li><li><a href="/edu_db_labs_IO-12_Group-4/conclusion/" class="sidebar-link">Висновки</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="реалізація-інформаціиного-та-програмного-забезпечення"><a href="#реалізація-інформаціиного-та-програмного-забезпечення" class="header-anchor">#</a> Реалізація інформаційного та програмного забезпечення</h1> <p>В рамках проекту розробляється:</p> <h2 id="sql-скрипт-для-створення-на-початкового-наповнення-бази-даних"><a href="#sql-скрипт-для-створення-на-початкового-наповнення-бази-даних" class="header-anchor">#</a> SQL-скрипт для створення на початкового наповнення бази даних</h2> <div class="language--- MySQL Script generated by MySQL Workbench extra-class"><pre class="language-text"><code>-- Wed Apr 26 20:57:08 2023
+-- Model: New Model    Version: 1.0
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `mydb` ;
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Role`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Role` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Role` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(180) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`User`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`User` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`User` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `avatar` JSON NULL,
+  `Role` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_User_Role1_idx` (`Role` ASC) VISIBLE,
+  CONSTRAINT `fk_User_Role1`
+    FOREIGN KEY (`Role`)
+    REFERENCES `mydb`.`Role` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Workspace`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Workspace` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Workspace` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(180) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Project`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Project` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Project` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `Workspace` INT NOT NULL,
+  `description` VARCHAR(180) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Project_Workspace1_idx` (`Workspace` ASC) VISIBLE,
+  CONSTRAINT `fk_Project_Workspace1`
+    FOREIGN KEY (`Workspace`)
+    REFERENCES `mydb`.`Workspace` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Board`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Board` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Board` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `Project` INT NOT NULL,
+  `description` VARCHAR(180) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Board_Project1_idx` (`Project` ASC) VISIBLE,
+  CONSTRAINT `fk_Board_Project1`
+    FOREIGN KEY (`Project`)
+    REFERENCES `mydb`.`Project` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Status`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Status` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Status` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`, `name`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Task`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Task` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Task` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(180) NULL,
+  `responsible` INT NOT NULL,
+  `deadline` DATETIME NULL,
+  `board` INT NOT NULL,
+  `Status` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Task_Board1_idx` (`board` ASC) VISIBLE,
+  INDEX `fk_Task_User1_idx` (`responsible` ASC) VISIBLE,
+  INDEX `fk_Task_Status1_idx` (`Status` ASC) VISIBLE,
+  CONSTRAINT `fk_Task_Board1`
+    FOREIGN KEY (`board`)
+    REFERENCES `mydb`.`Board` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Task_User1`
+    FOREIGN KEY (`responsible`)
+    REFERENCES `mydb`.`User` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Task_Status1`
+    FOREIGN KEY (`Status`)
+    REFERENCES `mydb`.`Status` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`State`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`State` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`State` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `description` VARCHAR(180) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Action`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Action` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Action` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `Workspace` INT NULL,
+  `Project` INT NULL,
+  `Board` INT NULL,
+  `User` INT NOT NULL,
+  `State` INT NOT NULL,
+  `Task` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Action_Board1_idx` (`Board` ASC) VISIBLE,
+  INDEX `fk_Action_User1_idx` (`User` ASC) VISIBLE,
+  INDEX `fk_Action_Project1_idx` (`Project` ASC) VISIBLE,
+  INDEX `fk_Action_Workspace1_idx` (`Workspace` ASC) VISIBLE,
+  INDEX `fk_Action_State1_idx` (`State` ASC) VISIBLE,
+  INDEX `fk_Action_Task1_idx` (`Task` ASC) VISIBLE,
+  CONSTRAINT `fk_Action_Board1`
+    FOREIGN KEY (`Board`)
+    REFERENCES `mydb`.`Board` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Action_User1`
+    FOREIGN KEY (`User`)
+    REFERENCES `mydb`.`User` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Action_Project1`
+    FOREIGN KEY (`Project`)
+    REFERENCES `mydb`.`Project` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Action_Workspace1`
+    FOREIGN KEY (`Workspace`)
+    REFERENCES `mydb`.`Workspace` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Action_State1`
+    FOREIGN KEY (`State`)
+    REFERENCES `mydb`.`State` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Action_Task1`
+    FOREIGN KEY (`Task`)
+    REFERENCES `mydb`.`Task` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`StateResolve`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`StateResolve` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`StateResolve` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `rule` VARCHAR(45) NOT NULL,
+  `State` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_StateResolve_State1_idx` (`State` ASC) VISIBLE,
+  CONSTRAINT `fk_StateResolve_State1`
+    FOREIGN KEY (`State`)
+    REFERENCES `mydb`.`State` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`Role`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`Role` (`id`, `name`, `description`) VALUES (1, 'SystemAdministrator', NULL);
+INSERT INTO `mydb`.`Role` (`id`, `name`, `description`) VALUES (2, 'WorkspaceManager', NULL);
+INSERT INTO `mydb`.`Role` (`id`, `name`, `description`) VALUES (3, 'ProjectManager', NULL);
+INSERT INTO `mydb`.`Role` (`id`, `name`, `description`) VALUES (4, 'ProjectUser', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`User`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`User` (`id`, `username`, `email`, `password`, `avatar`, `Role`) VALUES (DEFAULT, 'shunichkaaaa', 'gdaria296@gmail.com', '51386Gh1@', NULL, 2);
+INSERT INTO `mydb`.`User` (`id`, `username`, `email`, `password`, `avatar`, `Role`) VALUES (DEFAULT, 'TkachenkoOleksandr', 'informatikatkachenko@gmail.com', 'KL246FSn33', NULL, 1);
+INSERT INTO `mydb`.`User` (`id`, `username`, `email`, `password`, `avatar`, `Role`) VALUES (DEFAULT, 'dobfedir', 'dobrovolskiy.fedir@gmail.com', '527Fw28YB2572', NULL, 4);
+INSERT INTO `mydb`.`User` (`id`, `username`, `email`, `password`, `avatar`, `Role`) VALUES (DEFAULT, 'roninbean', 'sylenko.yaroslav@lll.kpi.ua', '27985Rwe91', NULL, 3);
+INSERT INTO `mydb`.`User` (`id`, `username`, `email`, `password`, `avatar`, `Role`) VALUES (DEFAULT, 'Kosyanich', 'danchikukloock@gmail.com', '63yGD041FF', NULL, 4);
+INSERT INTO `mydb`.`User` (`id`, `username`, `email`, `password`, `avatar`, `Role`) VALUES (DEFAULT, 'Minicall', 'sydoruk.vladyslav@lll.kpi.ua', '736RHa3262', NULL, 4);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`Status`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `mydb`;
+INSERT INTO `mydb`.`Status` (`id`, `name`) VALUES (DEFAULT, 'Unassigned');
+INSERT INTO `mydb`.`Status` (`id`, `name`) VALUES (DEFAULT, 'Accepted');
+INSERT INTO `mydb`.`Status` (`id`, `name`) VALUES (DEFAULT, 'Started');
+INSERT INTO `mydb`.`Status` (`id`, `name`) VALUES (DEFAULT, 'Completed');
+
+COMMIT;
+</code></pre></div><h2 id="restfull-сервіс-для-управління-даними"><a href="#restfull-сервіс-для-управління-даними" class="header-anchor">#</a> RESTfull сервіс для управління даними</h2> <h3 id="налаштування-express-сервера"><a href="#налаштування-express-сервера" class="header-anchor">#</a> Налаштування Express сервера</h3> <div class="language- extra-class"><pre class="language-text"><code>const express = require(&quot;express&quot;);
+const cors = require(&quot;cors&quot;);
+const router = require(&quot;./routes&quot;);
+const AppError = require(&quot;./utils/appError&quot;);
+const errorHandler = require(&quot;./utils/errorHandler&quot;);
+
+const app = express();
+// Use express.json() middleware to parse the URL encoded body
+app.use(express.json());
+app.use(cors());
+app.use(&quot;/api&quot;, router);
+
+app.all(&quot;*&quot;, (req, res, next) =&gt; {
+  next(new AppError(`The URL ${req.originalUrl} does not exists`, 404));
+});
+app.use(errorHandler);
+
+const PORT = 3000;
+app.listen(PORT, () =&gt; {
+  console.log(`server running on port ${PORT}`);
+});
+
+module.exports = app;
+</code></pre></div><h3 id="підключення-до-бази-даних-mysql"><a href="#підключення-до-бази-даних-mysql" class="header-anchor">#</a> Підключення до бази даних MySQL</h3> <div class="language- extra-class"><pre class="language-text"><code>const mysql = require(&quot;mysql&quot;);
+const conn = mysql.createConnection({
+  host: &quot;localhost&quot;,
+  user: &quot;root&quot;,
+  password: &quot;root123&quot;,
+  database: &quot;mydb&quot;,
+});
+
+conn.connect();
+
+module.exports = conn;
+</code></pre></div><h3 id="створення-контролерів-додатка"><a href="#створення-контролерів-додатка" class="header-anchor">#</a> Створення контролерів додатка</h3> <div class="language- extra-class"><pre class="language-text"><code>const AppError = require(&quot;../utils/appError&quot;);
+const conn = require(&quot;../services/db&quot;);
+
+exports.getAllUsers = (req, res, next) =&gt; {
+  conn.query(&quot;SELECT * FROM User&quot;, function (err, data, fields) {
+    if (err) return next(new AppError(err));
+    res.status(200).json({
+      status: &quot;success&quot;,
+      length: data?.length,
+      data: data,
+    });
+  });
+};
+
+exports.createUser = (req, res, next) =&gt; {
+  if (!req.body) return next(new AppError(&quot;No form data found&quot;, 404));
+  const values = [
+    req.body.username,
+    req.body.email,
+    req.body.password,
+    req.body.Role,
+  ];
+  conn.query(
+    &quot;INSERT INTO User (username, email, password, Role) VALUES(?)&quot;,
+    [values],
+    function (err, data, fields) {
+      if (err) return next(new AppError(err, 500));
+      res.status(201).json({
+        status: &quot;success&quot;,
+        message: &quot;user added!&quot;,
+      });
+    }
+  );
+};
+
+exports.getUserById = (req, res, next) =&gt; {
+  if (!req.params.id) {
+    return next(new AppError(&quot;No user id found&quot;, 404));
+  }
+  conn.query(
+    &quot;SELECT * FROM User WHERE id = ?&quot;,
+    [req.params.id],
+    function (err, data, fields) {
+      if (err) return next(new AppError(err, 500));
+      res.status(200).json({
+        status: &quot;success&quot;,
+        length: data?.length,
+        data: data,
+      });
+    }
+  );
+};
+
+exports.updateUser = (req, res, next) =&gt; {
+  if (!req.params.id) {
+    return next(new AppError(&quot;No user id found&quot;, 404));
+  }
+  conn.query(
+    &quot;UPDATE User SET username=?, email=?, password=?, Role=? WHERE id=?&quot;,
+    [
+      req.body.username,
+      req.body.email,
+      req.body.password,
+      req.body.Role,
+      req.params.id,
+    ],
+    function (err, data, fields) {
+      if (err) return next(new AppError(err, 500));
+      res.status(201).json({
+        status: &quot;success&quot;,
+        message: &quot;user info updated!&quot;,
+      });
+    }
+  );
+};
+
+exports.deleteUser = (req, res, next) =&gt; {
+  if (!req.params.id) {
+    return next(new AppError(&quot;No todo id found&quot;, 404));
+  }
+  conn.query(
+    &quot;DELETE FROM User WHERE id=?&quot;,
+    [req.params.id],
+    function (err, fields) {
+      if (err) return next(new AppError(err, 500));
+      res.status(201).json({
+        status: &quot;success&quot;,
+        message: &quot;user deleted!&quot;,
+      });
+    }
+  );
+};
+</code></pre></div><h3 id="створення-глобальних-обробників-помилок"><a href="#створення-глобальних-обробників-помилок" class="header-anchor">#</a> Створення глобальних обробників помилок</h3> <div class="language- extra-class"><pre class="language-text"><code>class AppError extends Error {
+  constructor(msg, statusCode) {
+    super(msg);
+
+    this.statusCode = statusCode;
+    this.error = `${statusCode}`.startsWith(&quot;4&quot;) ? &quot;fail&quot; : &quot;error&quot;;
+    this.isOperational = true;
+
+    Error.captureStackTrace(this, this.constructor);
+  }
+}
+module.exports = AppError;
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>module.exports = (err, req, res, next) =&gt; {
+  err.statusCode = err.statusCode || 500;
+  err.status = err.status || &quot;error&quot;;
+  res.status(err.statusCode).json({
+    status: err.status,
+    message: err.message,
+  });
+};
+</code></pre></div><h3 id="створення-routes"><a href="#створення-routes" class="header-anchor">#</a> Створення routes</h3> <div class="language- extra-class"><pre class="language-text"><code>const express = require(&quot;express&quot;);
+const controllers = require(&quot;../controllers&quot;);
+const router = express.Router();
+
+router.route(&quot;/User&quot;).get(controllers.getAllUsers).post(controllers.createUser);
+router
+  .route(&quot;/User/:id&quot;)
+  .get(controllers.getUserById)
+  .put(controllers.updateUser)
+  .delete(controllers.deleteUser);
+module.exports = router;
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Останнє оновлення:</span> <span class="time">5/4/2023, 11:40:39 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/edu_db_labs_IO-12_Group-4/design/" class="prev">
+        Проектування інформаційного забезпечення
+      </a></span> <span class="next"><a href="/edu_db_labs_IO-12_Group-4/test/">
+        Тестування працездатності системи
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/edu_db_labs_IO-12_Group-4/assets/js/app.093206e8.js" defer></script><script src="/edu_db_labs_IO-12_Group-4/assets/js/2.21dfbd12.js" defer></script><script src="/edu_db_labs_IO-12_Group-4/assets/js/23.a055a33b.js" defer></script>
+  </body>
+</html>
